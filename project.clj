@@ -5,6 +5,7 @@
 
   :dependencies [[cheshire "5.8.1"]
                  [clojure.java-time "0.3.2"]
+                 [cljfmt "0.5.1"]
                  [com.h2database/h2 "1.4.197"]
                  [conman "0.8.3"]
                  [cprop "0.1.13"]
@@ -31,14 +32,18 @@
                  [selmer "1.12.11"]]
 
   :min-lein-version "2.0.0"
-  
+
   :source-paths ["src/clj"]
   :test-paths ["test/clj"]
   :resource-paths ["resources"]
   :target-path "target/%s/"
   :main ^:skip-aot guestbook.core
 
-  :plugins [[lein-immutant "2.1.0"]]
+  :plugins [[com.jakemccrary/lein-test-refresh "0.24.1"]
+            [lein-cljfmt "0.6.4"]
+            [lein-immutant "2.1.0"]]
+
+  :repl-options {:init (require 'cljfmt.core)}
 
   :profiles
   {:uberjar {:omit-source true
@@ -57,7 +62,7 @@
                                  [ring/ring-devel "1.7.1"]
                                  [ring/ring-mock "0.3.2"]]
                   :plugins      [[com.jakemccrary/lein-test-refresh "0.23.0"]]
-                  
+
                   :source-paths ["env/dev/clj"]
                   :resource-paths ["env/dev/resources"]
                   :repl-options {:init-ns user}
