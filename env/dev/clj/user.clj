@@ -1,13 +1,13 @@
 (ns user
   (:require
-    [guestbook.config :refer [env]]
-    [clojure.spec.alpha :as s]
-    [expound.alpha :as expound]
-    [mount.core :as mount]
-    [guestbook.core :refer [start-app]]
-    [guestbook.db.core]
-    [conman.core :as conman]
-    [luminus-migrations.core :as migrations]))
+   [guestbook.config :refer [env]]
+   [clojure.spec.alpha :as s]
+   [expound.alpha :as expound]
+   [mount.core :as mount]
+   [guestbook.core :refer [start-app]]
+   [guestbook.db.core]
+   [conman.core :as conman]
+   [luminus-migrations.core :as migrations]))
 
 (alter-var-root #'s/*explain-out* (constantly expound/printer))
 
@@ -38,5 +38,3 @@
 
 (defn create-migration [name]
   (migrations/create name (select-keys env [:database-url])))
-
-
